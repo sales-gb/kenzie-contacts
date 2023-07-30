@@ -37,4 +37,4 @@ clientsRoutes.delete(
   deleteClientController
 );
 
-export default clientsRoutes;
+export { clientsRoutes };

@@ -1,13 +1,17 @@
 import { Repository } from "typeorm";
-import { TClient, TUpdateClient } from "../../interfaces/clients.interfaces";
+import {
+  TClient,
+  TClientRes,
+  TUpdateClient,
+} from "../../interfaces/clients.interfaces";
 import AppDataSource from "../../data-source";
 import Client from "../../entities/clients.entities";
-import { clientSchema } from "../../schemas/clients.schema";
+import { clientSchemaRes } from "../../schemas/clients.schema";
 
 const updateClientService = async (
   clientData: TUpdateClient,
   clientId: number
-): Promise<TClient> => {
+): Promise<TClientRes> => {
   const clientRepo: Repository<Client> = AppDataSource.getRepository(Client);
 
   const oldClientData: Client | null = await clientRepo.findOneBy({
@@ -20,7 +24,7 @@ const updateClientService = async (
   });
   await clientRepo.save(newClientData);
 
-  const clientReturn: TClient = clientSchema.parse(newClientData);
+  const clientReturn: TClientRes = clientSchemaRes.parse(newClientData);
 
   return clientReturn;
 };

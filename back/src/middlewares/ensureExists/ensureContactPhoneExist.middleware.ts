@@ -3,21 +3,22 @@ import { Repository } from "typeorm";
 import { AppError } from "../../error";
 import Client from "../../entities/clients.entities";
 import AppDataSource from "../../data-source";
+import Contact from "../../entities/contacts.entities";
 
 type TEmail = {
   phoneNumber: string;
 };
 
-const ensureClientPhoneNumberExistMiddleware = async (
+const ensureContactPhoneNumberExistMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   const { phoneNumber }: TEmail = req.body;
 
-  const clientRepo: Repository<Client> = AppDataSource.getRepository(Client);
+  const contatRepo: Repository<Contact> = AppDataSource.getRepository(Contact);
 
-  const verifyPhoneNumber: Client | null = await clientRepo.findOneBy({
+  const verifyPhoneNumber: Contact | null = await contatRepo.findOneBy({
     phoneNumber: phoneNumber,
   });
 
@@ -28,4 +29,4 @@ const ensureClientPhoneNumberExistMiddleware = async (
   return next();
 };
 
-export { ensureClientPhoneNumberExistMiddleware };
+export { ensureContactPhoneNumberExistMiddleware };

@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import {
-  TClient,
   TClientReq,
+  TClientRes,
+  TReadClients,
   TUpdateClient,
 } from "../interfaces/clients.interfaces";
-
 import {
   createClientService,
   readClientService,
@@ -19,7 +19,7 @@ const createClientController = async (
 ): Promise<Response> => {
   const clientData: TClientReq = req.body;
 
-  const newClient = await createClientService(clientData);
+  const newClient: TClientRes = await createClientService(clientData);
 
   return res.status(201).json(newClient);
 };
@@ -28,7 +28,7 @@ const readClientsController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const clients = await readClientService();
+  const clients: TReadClients = await readClientService();
 
   return res.json(clients);
 };
@@ -39,7 +39,7 @@ const readClientController = async (
 ): Promise<Response> => {
   const clientId = parseInt(req.params.id);
 
-  const client = await readClientByIdService(clientId);
+  const client: TClientRes = await readClientByIdService(clientId);
 
   return res.json(client);
 };
@@ -52,7 +52,7 @@ const updateClientController = async (
 
   const { id } = req.params;
 
-  const client: TClient = await updateClientService(clientData, Number(id));
+  const client: TClientRes = await updateClientService(clientData, Number(id));
 
   return res.status(200).json(client);
 };
