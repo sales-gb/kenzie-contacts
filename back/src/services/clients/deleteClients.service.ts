@@ -9,7 +9,7 @@ const deleteClientService = async (clientId: number): Promise<void> => {
     id: clientId,
   });
 
-  await clientRepo.delete(client!);
+  await clientRepo.remove(client!);
 };
 
 export { deleteClientService };
