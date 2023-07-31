@@ -26,7 +26,12 @@ contactRoutes.post(
   ensureContactPhoneNumberExistMiddleware,
   createContactController
 );
-contactRoutes.get("", ensureTokenIsValidMiddleware, readContactsController);
+contactRoutes.get(
+  "",
+  ensureTokenIsValidMiddleware,
+  ensureClientExistMiddleware,
+  readContactsController
+);
 contactRoutes.get("/:id", ensureTokenIsValidMiddleware, readContactController);
 contactRoutes.patch(
   "/:id",

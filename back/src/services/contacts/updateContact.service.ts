@@ -1,17 +1,17 @@
 import { Repository } from "typeorm";
 import AppDataSource from "../../data-source";
 import Contact from "../../entities/contacts.entities";
-import { TContact, TUpdateContact } from "../../interfaces";
-import { contactSchema } from "../../schemas";
+import { TContact, TUpdateClient, TUpdateContact } from "../../interfaces";
+import { contactSchema, updateContactSchema } from "../../schemas";
 
 const updateContactService = async (
   contactData: TUpdateContact,
-  clientId: number
-): Promise<TContact> => {
+  contactId: number
+): Promise<Contact> => {
   const contactRepo: Repository<Contact> = AppDataSource.getRepository(Contact);
 
   const oldClientData: Contact | null = await contactRepo.findOneBy({
-    id: clientId,
+    id: contactId,
   });
 
   const newContactData: Contact = contactRepo.create({
@@ -20,9 +20,7 @@ const updateContactService = async (
   });
   await contactRepo.save(newContactData);
 
-  const contactReturn: TContact = contactSchema.parse(newContactData);
-
-  return contactReturn;
+  return newContactData;
 };
 
 export { updateContactService };
