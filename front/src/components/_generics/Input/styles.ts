@@ -16,6 +16,11 @@ export const StyledTextField = styled(TextField)`
 
   input {
     font-family: ${({ theme }) => theme.FONTS.primary};
+    font-size: ${({ theme }) => theme.FONTS_SIZES.mobile};
+
+    @media (min-width: 768px) {
+      font-size: ${({ theme }) => theme.FONTS_SIZES.body};
+    }
   }
 
   label {
