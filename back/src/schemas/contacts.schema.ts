@@ -12,6 +12,7 @@ const contactSchema = z.object({
 const contactSchemaReq = contactSchema.omit({
   id: true,
   createdAt: true,
+  clientId: true,
 });
 
 const readContactSchema = z.array(contactSchema);

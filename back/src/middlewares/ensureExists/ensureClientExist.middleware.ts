@@ -10,7 +10,7 @@ const ensureClientExistMiddleware = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const clientId: number = parseInt(req.params.id);
+  const clientId: number = parseInt(res.locals.token.id);
   const clientRepo: Repository<Client> = AppDataSource.getRepository(Client);
 
   const client: Client | null = await clientRepo.findOneBy({

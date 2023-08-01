@@ -22,7 +22,12 @@ const createContactService = async (
   });
   await contactRepo.save(contact);
 
-  const contactReturn: TContact = contactSchema.parse(contact);
+  const contactFormatted = {
+    ...contact,
+    clientId: contact.client.id,
+  };
+
+  const contactReturn: TContact = contactSchema.parse(contactFormatted);
 
   return contactReturn;
 };

@@ -4,16 +4,20 @@ import Contact from "../../entities/contacts.entities";
 import { TContact } from "../../interfaces";
 import { contactSchema } from "../../schemas";
 
-const readContactByIdService = async (contactId: number): Promise<TContact> => {
+const readContactByIdService = async (
+  contactId: number,
+  clientId: number
+): Promise<Contact | null> => {
   const contactRepo: Repository<Contact> = AppDataSource.getRepository(Contact);
 
-  const contact: Contact | null = await contactRepo.findOneBy({
-    id: contactId,
+  const contact: Contact | null = await contactRepo.findOne({
+    where: {
+      id: contactId,
+      client: { id: clientId },
+    },
   });
 
-  const contactReturn: TContact = contactSchema.parse(contact);
-
-  return contactReturn;
+  return contact;
 };
 
 export { readContactByIdService };
