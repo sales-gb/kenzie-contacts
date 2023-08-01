@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const StyledMainLoginPage = styled.main`
+export const StyledMainRegisterPage = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,7 @@ export const StyledLogoBox = styled.div`
   align-items: center;
 `;
 
-export const StyledLoginForm = styled.form`
+export const StyledRegisterForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -95,7 +95,7 @@ export const StyledLoginForm = styled.form`
   }
 `;
 
-export const StyledImageLoginBox = styled.div`
+export const StyledImageRegisterBox = styled.div`
   min-width: 50%;
   min-height: 100vh;
 
