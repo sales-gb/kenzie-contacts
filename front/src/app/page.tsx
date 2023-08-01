@@ -1,7 +1,7 @@
+"use client";
+
+import { LoginForm } from "@/components";
+
 export default function Home() {
-  return (
-    <div>
-      <h1>Hi</h1>
-    </div>
-  );
+  return <LoginForm />;
 }
