@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { ROUTES } from "./constants";
 
 export function middleware(req: NextRequest) {
-  const verify = req.cookies.get("@xzibank.token");
+  const verify = req.cookies.get("@kenzieContacts.token");
   const url = req.nextUrl;
   const urlClone = url.clone();
 
