@@ -20,7 +20,11 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  padding: 0 30px;
+  padding: 0 10px;
+
+  @media (min-width: 768px) {
+    padding: 0 60px;
+  }
 
   background: ${({ theme }) => theme.COLORS.white100};
 

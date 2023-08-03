@@ -1,24 +1,38 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { List, SignOut, UserCircle } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import logo from "@/assets/logo/logo-default.svg";
-// import { destroySession } from '@/services/auth';
 
 import * as S from "./styles";
+import { destroySession } from "@/services";
+import { useLayoutStore } from "@/store";
 
 export const Header = () => {
+  const { isDesk, setDesk } = useLayoutStore();
   const [isAdminMenuOpen, setOpenAdminMenu] = useState(false);
-
   const router = useRouter();
 
-  // const handleLogout = () => {
-  //   destroySession();
-  //   router.push('/login');
-  // };
+  useEffect(() => {
+    const handleResize = () => {
+      setDesk(window.innerWidth > 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setDesk]);
+
+  const handleLogout = () => {
+    destroySession();
+    router.push("/login");
+  };
 
   const openMenu = () => {
     setOpenAdminMenu(!isAdminMenuOpen);
@@ -27,8 +41,13 @@ export const Header = () => {
   return (
     <S.StyledHeader>
       <S.LeftSideHeader>
-        <Link href="/dashboard">
-          <Image src={logo} alt="xziBank logo" width={200} height={40} />
+        <Link href="/contacts">
+          <Image
+            src={logo}
+            alt="xziBank logo"
+            width={!isDesk ? 150 : 277}
+            height={!isDesk ? 30 : 43}
+          />
         </Link>
       </S.LeftSideHeader>
 
@@ -48,11 +67,7 @@ export const Header = () => {
             <UserCircle size={30} color={"#000"} weight="thin" />
             <p>Perfil</p>
           </button>
-          <button
-            className="navLink"
-            type="button"
-            onClick={() => console.log("hi")}
-          >
+          <button className="navLink" type="button" onClick={handleLogout}>
             <SignOut size={30} color={"#000"} weight="thin" />
             <p>Sair</p>
           </button>

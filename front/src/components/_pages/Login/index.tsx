@@ -13,7 +13,6 @@ import { useLayoutStore } from "@/store";
 import logo from "@/assets/logo/logo-default.svg";
 import loginImage from "@/assets/default-images/login-image.svg";
 import Image from "next/image";
-import Link from "next/link";
 
 export const LoginForm = () => {
   const { isDesk, setDesk } = useLayoutStore();
@@ -47,7 +46,7 @@ export const LoginForm = () => {
       console.log(data);
       await createSession(data);
       setIsLoading(false);
-      router.push("/dashboard");
+      router.push("/contacts");
     } catch (error) {
       setIsLoading(false);
       console.error(error);
