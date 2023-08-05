@@ -31,7 +31,7 @@ export const Header = () => {
 
   const handleLogout = () => {
     destroySession();
-    router.push("/login");
+    router.push("/");
   };
 
   const openMenu = () => {
