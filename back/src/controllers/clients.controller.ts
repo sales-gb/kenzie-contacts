@@ -2,12 +2,10 @@ import { Request, Response } from "express";
 import {
   TClientReq,
   TClientRes,
-  TReadClients,
   TUpdateClient,
 } from "../interfaces/clients.interfaces";
 import {
   createClientService,
-  readClientService,
   readClientByIdService,
   updateClientService,
   deleteClientService,
@@ -24,22 +22,13 @@ const createClientController = async (
   return res.status(201).json(newClient);
 };
 
-const readClientsController = async (
-  req: Request,
-  res: Response
-): Promise<Response> => {
-  const clients: TReadClients = await readClientService();
-
-  return res.json(clients);
-};
-
 const readClientController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const clientId = parseInt(req.params.id);
+  const { id } = res.locals.token;
 
-  const client: TClientRes = await readClientByIdService(clientId);
+  const client: TClientRes = await readClientByIdService(Number(id));
 
   return res.json(client);
 };
@@ -50,7 +39,7 @@ const updateClientController = async (
 ): Promise<Response> => {
   const clientData: TUpdateClient = req.body;
 
-  const { id } = req.params;
+  const { id } = res.locals.token;
 
   const client: TClientRes = await updateClientService(clientData, Number(id));
 
@@ -61,7 +50,7 @@ const deleteClientController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const { id } = req.params;
+  const { id } = res.locals.token;
 
   await deleteClientService(Number(id));
 
@@ -70,7 +59,6 @@ const deleteClientController = async (
 
 export {
   createClientController,
-  readClientsController,
   readClientController,
   updateClientController,
   deleteClientController,

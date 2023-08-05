@@ -3,7 +3,6 @@ import {
   createClientController,
   deleteClientController,
   readClientController,
-  readClientsController,
   updateClientController,
 } from "../controllers";
 import { clientSchemaReq, updateClientSchema } from "../schemas";
@@ -12,6 +11,7 @@ import {
   ensureClientExistMiddleware,
   ensureClientEmailExistMiddleware,
   ensureClientPhoneNumberExistMiddleware,
+  ensureTokenIsValidMiddleware,
 } from "../middlewares";
 
 const clientsRoutes: Router = Router();
@@ -23,16 +23,22 @@ clientsRoutes.post(
   ensureDataIsValidMiddleware(clientSchemaReq),
   createClientController
 );
-clientsRoutes.get("", readClientsController);
-clientsRoutes.get("/:id", ensureClientExistMiddleware, readClientController);
+clientsRoutes.get(
+  "",
+  ensureTokenIsValidMiddleware,
+  ensureClientExistMiddleware,
+  readClientController
+);
 clientsRoutes.patch(
-  "/:id",
+  "",
+  ensureTokenIsValidMiddleware,
   ensureClientExistMiddleware,
   ensureDataIsValidMiddleware(updateClientSchema),
   updateClientController
 );
 clientsRoutes.delete(
-  "/:id",
+  "",
+  ensureTokenIsValidMiddleware,
   ensureClientExistMiddleware,
   deleteClientController
 );

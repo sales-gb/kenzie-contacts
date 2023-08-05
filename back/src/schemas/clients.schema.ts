@@ -18,14 +18,6 @@ const clientSchemaRes = clientSchema.omit({
   password: true,
 });
 
-const readClientSchema = z.array(clientSchemaRes);
-
 const updateClientSchema = clientSchemaReq.partial();
 
-export {
-  clientSchema,
-  clientSchemaReq,
-  readClientSchema,
-  updateClientSchema,
-  clientSchemaRes,
-};
+export { clientSchema, clientSchemaReq, updateClientSchema, clientSchemaRes };
