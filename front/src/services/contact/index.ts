@@ -1,5 +1,6 @@
 import { parseCookies } from "nookies";
 import { api } from "..";
+import { toast } from "react-hot-toast";
 
 const cookies = parseCookies();
 const token = cookies["@kenzieContacts.token"];
@@ -31,6 +32,21 @@ export const retriveContact = async (id: number) => {
     const data = res.data;
     return data;
   } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updateContact = async (id: number, data: any) => {
+  try {
+    const res = await api.patch(`/contacts/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    toast.success("Contato atualizado com sucesso!!");
+    return res.data;
+  } catch (error) {
+    toast.error("Ops! Parece que algo deu errado!");
     console.log(error);
   }
 };

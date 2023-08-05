@@ -43,7 +43,6 @@ export const LoginForm = () => {
   const handleLogin = async (data: TLoginSchema) => {
     try {
       setIsLoading(true);
-      console.log(data);
       await createSession(data);
       setIsLoading(false);
       router.push("/contacts");

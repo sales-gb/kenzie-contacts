@@ -18,7 +18,7 @@ export function middleware(req: NextRequest) {
   if (verify && ROUTES.public.includes(url.pathname)) {
     console.log("route -> public");
 
-    urlClone.pathname = "/dashboard";
+    urlClone.pathname = "/contacts";
 
     return NextResponse.redirect(urlClone);
   }
