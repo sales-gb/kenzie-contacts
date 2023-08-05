@@ -1,10 +1,5 @@
 import { Request, Response } from "express";
-import {
-  TContact,
-  TContactReq,
-  TReadContacts,
-  TUpdateContact,
-} from "../interfaces";
+import { TContact, TContactReq, TUpdateContact } from "../interfaces";
 import {
   createContactService,
   deleteContactService,
@@ -21,7 +16,10 @@ const createContactController = async (
   const contactData: TContactReq = req.body;
   const clientId = Number(res.locals.token.id);
 
-  const newContact = await createContactService(contactData, clientId);
+  const newContact: TContact = await createContactService(
+    contactData,
+    clientId
+  );
 
   return res.status(201).json(newContact);
 };
