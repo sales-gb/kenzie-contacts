@@ -15,7 +15,7 @@ export const ErrorContainer = styled.div`
 
   & > p:first-child {
     font-size: 1.5rem;
-    color: ${({ theme }) => theme.COLORS.black};
+    color: ${({ theme }) => theme.COLORS.white900};
     font-weight: 600;
     text-align: center;
   }
@@ -23,7 +23,7 @@ export const ErrorContainer = styled.div`
 
 export const ErrorMessage = styled.p`
   font-size: 1.2rem;
-  color: ${({ theme }) => theme.COLORS.red};
+  color: #ff0000;
   font-weight: 400;
   text-align: center;
 `;

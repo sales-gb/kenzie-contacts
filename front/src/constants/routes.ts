@@ -1,4 +1,4 @@
 export const ROUTES = {
   public: ["/", "/register"],
-  private: ["/contacts", "/contacts/:id", "/clients/:id"],
+  private: ["/contacts", "/contacts/:id", "/user"],
 };
