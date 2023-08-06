@@ -15,4 +15,7 @@ export const registerSchema = zod
   })
   .required();
 
+export const updateUserSchema = registerSchema.partial();
+
 export type TRegisterSchema = zod.infer<typeof registerSchema>;
+export type TUpdateUserSchema = zod.infer<typeof updateUserSchema>;

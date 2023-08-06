@@ -59,14 +59,10 @@ export const Header = () => {
 
       {isAdminMenuOpen && (
         <S.MenuOptions onMouseLeave={openMenu}>
-          <button
-            className="navLink"
-            type="button"
-            onClick={() => console.log("hi")}
-          >
+          <Link className="navLink" href={"/user"}>
             <UserCircle size={30} color={"#000"} weight="thin" />
             <p>Perfil</p>
-          </button>
+          </Link>
           <button className="navLink" type="button" onClick={handleLogout}>
             <SignOut size={30} color={"#000"} weight="thin" />
             <p>Sair</p>
