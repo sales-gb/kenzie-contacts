@@ -30,26 +30,8 @@ export const StyledHeaderDash = styled.div`
     font-size: ${({ theme }) => theme.FONTS_SIZES.title};
   }
 
-  .styledLink {
-    font-family: ${({ theme }) => theme.FONTS.primary};
-    font-size: ${({ theme }) => theme.FONTS_SIZES.medium};
-    font-weight: ${({ theme }) => theme.FONTS_WEIGHTS.medium};
-
-    padding: 6px 16px;
-    background: ${({ theme }) => theme.COLORS.blue100};
-    color: ${({ theme }) => theme.COLORS.blue700};
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 6px;
-
-    &:hover {
-      background: ${({ theme }) => theme.COLORS.blue600};
-      color: ${({ theme }) => theme.COLORS.white100};
-    }
-
-    @media (min-width: 500px) {
-      font-size: ${({ theme }) => theme.FONTS_SIZES.subtitle};
-    }
+  .buttonContainer {
+    width: 150px;
   }
 `;
 
@@ -86,7 +68,7 @@ export const StyledTitleBox = styled.div`
     display: none;
   }
 
-  @media (min-width: 500px) {
+  @media (min-width: 1024px) {
     grid-template-columns: 80px repeat(4, 1fr);
 
     font-size: ${({ theme }) => theme.FONTS_SIZES.subtitle};
@@ -134,7 +116,7 @@ export const StyledContactsList = styled.ul`
       display: none;
     }
 
-    @media (min-width: 500px) {
+    @media (min-width: 1024px) {
       grid-template-columns: 70px repeat(4, 1fr);
       padding: 23px 20px;
 

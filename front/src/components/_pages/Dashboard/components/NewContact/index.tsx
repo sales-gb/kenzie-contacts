@@ -1,59 +1,44 @@
 "use client";
 
-import { updateContact } from "@/services";
-import { updateContactSchema } from "@/utils/validations";
-import { useParams } from "next/navigation";
+import { createContact } from "@/services";
+import { contactSchema } from "@/utils/validations";
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ButtonPrimary, ButtonSecondary, IContact, Input } from "@/components";
+import { ButtonPrimary, ButtonSecondary, Contact, Input } from "@/components";
 
 import * as S from "./styles";
 
-type TEditContact = {
+type TNewContact = {
   fullName: string;
   email: string;
   phoneNumber: string;
 };
 
-type TEditProps = {
-  data: TEditContact;
-  contact: IContact;
+type TContactProps = {
   onClose: () => void;
-  editedContact: IContact | null;
-  setEditedContact: (contact: IContact | null) => void;
+  onAddContact: (newContact: Contact) => void;
 };
 
-export const EditContactForm = ({
-  data,
-  onClose,
-  setEditedContact,
-  contact,
-}: TEditProps) => {
-  const { id } = useParams();
+export const NewContactForm = ({ onClose, onAddContact }: TContactProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const methods = useForm({
-    resolver: zodResolver(updateContactSchema),
+    resolver: zodResolver(contactSchema),
     defaultValues: {
-      fullName: data.fullName,
-      email: data.email,
-      phoneNumber: data.phoneNumber,
+      fullName: "",
+      email: "",
+      phoneNumber: "",
     },
   });
   const { handleSubmit, register } = methods;
 
-  const handleUpdate = async (data: TEditContact) => {
+  const handleUpdate = async (data: TNewContact) => {
     try {
-      const updatedContact: IContact = {
-        ...data,
-        id: contact.id,
-        createdAt: contact.createdAt,
-      };
       setIsLoading(true);
-      await updateContact(Number(id), data);
+      const newContact = await createContact(data);
       setIsLoading(false);
-      setEditedContact({ ...updatedContact });
+      onAddContact(newContact);
       onClose();
     } catch (error) {
       setIsLoading(false);
@@ -64,7 +49,6 @@ export const EditContactForm = ({
   };
 
   const handleCancel = () => {
-    setEditedContact(null);
     onClose();
   };
 
@@ -73,7 +57,7 @@ export const EditContactForm = ({
       <S.StyledFormBox>
         <S.StyledLoginForm onSubmit={handleSubmit(handleUpdate)}>
           <div className="textBox">
-            <h3>Edite aqui!</h3>
+            <p>Adicione novos contatos a sua agenda</p>
           </div>
 
           <div className="inputBox">

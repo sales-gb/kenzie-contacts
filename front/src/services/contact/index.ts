@@ -5,6 +5,12 @@ import { toast } from "react-hot-toast";
 const cookies = parseCookies();
 const token = cookies["@kenzieContacts.token"];
 
+interface ICreateContact {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+}
+
 export const getContacts = async () => {
   try {
     const res = await api.get("/contacts", {
@@ -61,6 +67,21 @@ export const deleteContact = async (id: number) => {
     toast.success("Contato deletado com sucesso!!");
   } catch (error) {
     toast.error("Ops algo deu errado ao deletar o contato!");
+    console.log(error);
+  }
+};
+
+export const createContact = async (data: ICreateContact) => {
+  try {
+    const res = await api.post("/contacts", data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    toast.success("Novo contato adicionado com sucesso!!");
+    return res.data;
+  } catch (error) {
+    toast.error("Ops algo deu errado ao adicionar o contato!");
     console.log(error);
   }
 };
