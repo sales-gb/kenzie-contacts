@@ -50,3 +50,17 @@ export const updateContact = async (id: number, data: any) => {
     console.log(error);
   }
 };
+
+export const deleteContact = async (id: number) => {
+  try {
+    const res = await api.delete(`/contacts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    toast.success("Contato deletado com sucesso!!");
+  } catch (error) {
+    toast.error("Ops algo deu errado ao deletar o contato!");
+    console.log(error);
+  }
+};

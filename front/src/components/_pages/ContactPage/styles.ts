@@ -107,7 +107,6 @@ export const SyledContactInfo = styled.div`
     gap: 5px;
 
     p {
-      font-family: ${({ theme }) => theme.FONTS.primary};
       font-size: ${({ theme }) => theme.FONTS_SIZES.body};
       font-weight: ${({ theme }) => theme.FONTS_WEIGHTS.regular};
       color: ${({ theme }) => theme.COLORS.white800};
@@ -123,5 +122,31 @@ export const SyledContactInfo = styled.div`
     p {
       font-size: ${({ theme }) => theme.FONTS_SIZES.medium};
     }
+  }
+`;
+
+export const StyledDeleteModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+
+  margin: 0 auto;
+
+  .headerModal {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+      font-size: ${({ theme }) => theme.FONTS_SIZES.subtitle};
+      font-weight: ${({ theme }) => theme.FONTS_WEIGHTS.bold};
+      color: ${({ theme }) => theme.COLORS.white800};
+    }
+  }
+
+  .btnContainer {
+    display: flex;
+    gap: 8px;
   }
 `;
