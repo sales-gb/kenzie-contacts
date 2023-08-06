@@ -8,4 +8,5 @@ export const contactSchema = z.object({
 
 export const updateContactSchema = contactSchema.partial();
 
+export type TContact = zod.infer<typeof contactSchema>;
 export type TContactUpdate = zod.infer<typeof updateContactSchema>;

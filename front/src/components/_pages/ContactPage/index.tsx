@@ -1,7 +1,6 @@
 "use client";
 
 import { deleteContact, retriveContact } from "@/services";
-import { useLayoutStore } from "@/store";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { Pen, Trash, Warning } from "phosphor-react";
@@ -9,14 +8,9 @@ import { useEffect, useState } from "react";
 
 import * as S from "./styles";
 import { useModal } from "@/components/_generics/Modals/Default/useModal";
-import {
-  ButtonPrimary,
-  ButtonSecondary,
-  Contact,
-  Container,
-  ModalDefault,
-} from "@/components";
+import { ButtonPrimary, ButtonSecondary, ModalDefault } from "@/components";
 import { EditContactForm } from "./components/EditContact";
+import { formatDate } from "@/utils";
 
 export interface IContact {
   id: number;
@@ -70,6 +64,7 @@ export const ContactPage = () => {
     setIsEdit(false);
     setIsDelete(true);
   };
+
   const handleDeleteContact = async () => {
     try {
       const contactId = Number(id);
@@ -130,7 +125,7 @@ export const ContactPage = () => {
 
             <div className="infoCard">
               <p className="label">Registro:</p>
-              <p>{contact.createdAt}</p>
+              <p>{formatDate(contact.createdAt)}</p>
             </div>
           </S.SyledContactInfo>
         </S.StyledContactSection>
@@ -161,17 +156,17 @@ export const ContactPage = () => {
             </div>
 
             <div className="btnContainer">
-              <ButtonPrimary
-                type="button"
-                title="Confirmar"
-                onClick={handleDeleteContact}
-                isLoading={isLoading}
-              />
-
               <ButtonSecondary
                 type="button"
                 title="Cancelar"
                 onClick={closeModal}
+                isLoading={isLoading}
+              />
+
+              <ButtonPrimary
+                type="button"
+                title="Confirmar"
+                onClick={handleDeleteContact}
                 isLoading={isLoading}
               />
             </div>
