@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://res.cloudinary.com/dhavjx2gp/image/upload/v1691377967/logo-default_kgxhwy.svg" alt="Kenzie Contacts" width="200" height="200">
+  <img src="https://res.cloudinary.com/dhavjx2gp/image/upload/v1691377967/logo-default_kgxhwy.svg" alt="Kenzie Contacts" width="400" height="200">
 </p>
 Bem-vindo(a) ao Kenzie Contacts! Este é um projeto Full Stack desenvolvido por mim, com o objetivo de oferecer aos usuários um controle prático e organizado de seus contatos pessoais. Com uma interface amigável e funcional, esta aplicação foi criada para facilitar o gerenciamento de contatos e proporcionar uma experiência agradável aos seus usuários.
 
