@@ -62,16 +62,7 @@ Após executar esses comandos, o Front-end do Kenzie Contacts estará rodando lo
 
 <br>
 
-# Link da aplicação na Vercel
-
-
-A aplicação Kenzie Contacts Front-End está hospedada na plataforma Vercel e pode ser acessada através do link abaixo. No entanto, é importante lembrar que, para aproveitar todas as funcionalidades da aplicação, você deve estar rodando a API localmente em sua máquina.
-
-### <a href="https://kenzie-contacts-mu.vercel.app/" target="_blank">Deploy</a>
-
-Caso você ainda não tenha a API rodando localmente, siga as instruções no README do <a href="https://github.com/sales-gb/kenzie-contacts/tree/main/back">Back-End</a> para executá-la antes de acessar a aplicação na Vercel.
-
-Lembre-se de que, como o projeto ainda não possui deploy completo em produção, a aplicação estará disponível apenas durante o período de execução local e no link da Vercel.
+Lembre-se de que, como o projeto ainda não possui deploy completo em produção, a aplicação estará disponível apenas localmente.
 
 Se precisar de mais ajuda ou tiver alguma dúvida, estou à disposição!
 
