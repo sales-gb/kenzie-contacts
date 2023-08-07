@@ -43,3 +43,5 @@ Envie suas alterações para o repositório remoto: git push origin minha-featur
 Abra uma pull request descrevendo suas modificações detalhadamente.
 Equipe de Desenvolvimento
 Este projeto foi idealizado e desenvolvido por um único desenvolvedor, que dedicou esforços e paixão para criar e entregar o Kenzie Contacts aos seus usuários.
+
+Feito com ♥ by sales-gb :wave:
