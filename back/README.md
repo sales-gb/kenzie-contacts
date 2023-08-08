@@ -10,6 +10,22 @@
   Este é o backend da aplicação Kenzie Contacts - Uma plataforma para gerenciamento de contatos pessoais desenvolvida por mim, aqui na Kenzie! O objetivo dessa API é permitir que os usuários cadastrem e controlem seus contatos de forma eficiente!
 </p>
 
+## Configurando o Banco de Dados
+
+O Kenzie Contacts requer um banco de dados para armazenar informações sobre usuários e contatos. Siga estas etapas para configurar o banco de dados:
+
+1. Certifique-se de que você tenha um servidor de banco de dados compatível (como PostgreSQL, MySQL, SQLite, etc.) instalado e em execução em sua máquina.
+
+2. Crie um novo banco de dados para o projeto Kenzie Contacts.
+
+3. Abra o arquivo `.env` na raiz do projeto e configure as variáveis de ambiente relacionadas ao banco de dados de acordo com o servidor que você está usando. Siga os passos do arquivo .env.example e conseguirá rodar o projeto.
+
+<br>
+
+<blockquote> Lembre-se de substituir as variáveis específicas, como `user`, `password` e `db`, pelas informações reais do seu projeto. Como seu nome de usuário, sua senha e o nome do banco de dados que foi criado.</blockquote>
+
+<br>
+
 ## Como executar localmente
 
 Para executar o projeto localmente em sua máquina, você precisa ter o Node.js e o npm (Node Package Manager) instalados. Caso ainda não tenha, você pode baixá-los através do site oficial do Node.js: https://nodejs.org/
@@ -35,7 +51,13 @@ cd kenzie-contacts/back
 npm install
 ````
 
-4. Inicie o servidor:
+4. Rode as migrações do TypeORM:
+
+````
+npm run typeorm migration:run -- -d src/data-source
+````
+
+5. Inicie o servidor:
 
 ````
 npm run dev
